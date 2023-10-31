@@ -6,23 +6,12 @@
 // Date Created: 30/10/2023
 
 module sudoku (
-    input clk,                                  // Clock input
-    output reg [323:0] output_grid_flat         // 9x9 array of 4 bits for output flattened to 324 bits
+    input clk
 );
 
     // Internal 9x9 grid to make operations more intuitive
-    reg [3:0] sudoku_grid[8:0][8:0];
-
-    // Mapping sudoku grid to an output to avoid deletion during synthesis
-    // and be compatible with verilog 2005
-    always @(posedge clk) begin
-        integer i, j;
-        for(i=0; i<9; i=i+1) begin
-            for(j=0; j<9; j=j+1) begin
-                output_grid_flat[i*9*4+j*4+:4] = sudoku_grid[i][j];
-            end
-        end
-    end
+    // (* Keep *) prevent the register from getting discard during synthesis
+    (* keep *) reg [3:0] sudoku_grid[8:0][8:0];
 
     `ifdef FORMAL
     // declaration of for loop variables
@@ -145,7 +134,7 @@ module sudoku (
                  sudoku_grid[0][8];
 
     always @(*) begin
-        assert(sum!=6'd45);
+        cover(sum==6'd45);
     end
     `endif
 endmodule
