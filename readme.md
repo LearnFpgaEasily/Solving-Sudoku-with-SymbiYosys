@@ -1,6 +1,6 @@
 # Solving a sudoku with SymbiYosys
 
-This repository contain the source code of the blog post [Solving a Sudoku with SymbiYosys Formal Verification](TODO) written by Theophile from [learn-fpga-easily](https://learn-fpga-easily.com/)
+This repository contain the source code of the blog post [Solving a Sudoku with SymbiYosys Formal Verification](https://blog.yosyshq.com/p/solving-sudoku-with-symbiyosys) written by Theophile from [learn-fpga-easily](https://learn-fpga-easily.com/)
 
 ## Prerequisites
 
